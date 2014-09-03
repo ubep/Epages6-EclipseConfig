@@ -22,6 +22,67 @@ parameters, some of them don't. Fortunately, all you need to do to
 add these tools, is place this project in your Eclipse workspace.
 </p>
 
+<p>After adding this project to your Eclipse workspace, you should see something like in this screenshot.</p>
+<p>
+<img src="external_launches_screen.jpg" alt="Eclipse External Tools" title="Eclipse External Tools" />
+</p>
+
+<p>The scripts are designed to be plaform independent. So,
+some variables need to be set to point to the correct executables.
+You have to create Eclipse substitutions for <tt>PERL</tt>,
+<tt>MAKE</tt> and set a replacement for <tt>COMPANY</tt>, like shown in the sccrenshot.
+</p>
+
+<p>Some of the scripts rely on an environment variable called <tt>EPAGES_TESTSITE</tt>. You should
+assign it, e.g. to your demo site <tt>Store</tt>.
+</p>
+
+<p>
+<img src="config_string_substitution.jpg" alt="Eclipse settings" title="Eclipse settings" />
+</p>
+
+
+<p>
+We also have a list of perl code templates. If you want to add these,
+go to the EPIC Editor Templates, and click on "Import".
+<br/><br/>
+<img src="config_code_templates.jpg" alt="Import code templates" title="import code templates" /> 
+</p>
+<p>Select <tt>perl_templates.xml</tt> from your EclipseConfig project.</p>
+<p><img src="config_template_select.jpg" alt="selecting templates.xml" title="selecting templates.xml" /> 
+
+</p>
+<h2>Perl::Critic</h2>
+
+<p>We encourage you to use Perl::Critic to enforce clean perl code. To use ePages default settings, 
+set the environment variable <tt>PERLCRITIC</tt> to point to <tt>$ENV{EPAGES_CARTRIDGES}/Core/Scripts/perlcritic_hard.conf</tt>.
+We have also provided an extended Perl::Critic configuration that even includes informational messages in <tt>perlcritic_hard_ide.conf</tt>.
+You may place this file into your project root folder, name it <tt>.perlcriticrc</tt>, and adapt it to your needs.</p>
+
+<p>To enable some additional Perl::Critic rules defined by ePages, you have to add 
+<tt>.../DE_EPAGES/Core/Scripts</tt> and <tt>.../DE_EPAGES/XML/Scripts</tt> to your <tt>PERL5LIB</tt> environment variable.</p>
+<p>
+See the following screenshot for the configuration settings of Perl::Critic in Eclipse.
+<br/><br/>
+<img src="config_perlcritic.jpg" alt="Perlcritic config" title="Perlcritic config" />
+</p>
+<p>
+</p>
+
+<h2>PerlTidy</h2>
+<p>ePages uses the following line of PerlTidy settings. Feel free to use this as a starting point, name it <tt>.perltidyrc</tt> and
+place it in your project root folder, and add the same content in Eclipse Preferences &gt; Perl EPIC &gt; Source Formatter &gt; Options.</p>
+<pre>
+-st -se -ibc -i=4 -cti=0  -sot -ndws -pt=1 -bt=1 -sbt=1 -bbt=1 -nsfs -nolq -l=160
+-wbb="% + - * / x != == >= <= =~ !~ &lt; &gt; | &amp; = **= += *= &= &lt;&lt;= &&= -= /= |= >>= ||= //= .= %= ^= x="
+</pre>
+
+<h2>Last Modification</h2>
+<p>February 15th, 2011 by <a href="mailto:training@epages.com">ePages Training Department</a>.</p>
+
+<h2>External Tools Launches</h2>
+
+
 <p>Here's a list of what is currently included in our distribution:</p>
 
 <dd>
@@ -342,63 +403,6 @@ add these tools, is place this project in your Eclipse workspace.
 </dd>
 
 
-<p>After adding this project to your Eclipse workspace, you should see something like in this screenshot.</p>
-<p>
-<img src="external_launches_screen.jpg" alt="Eclipse External Tools" title="Eclipse External Tools" />
-</p>
-
-<p>The scripts are designed to be plaform independent. So,
-some variables need to be set to point to the correct executables.
-You have to create Eclipse substitutions for <tt>PERL</tt>,
-<tt>MAKE</tt> and set a replacement for <tt>COMPANY</tt>, like shown in the sccrenshot.
-</p>
-
-<p>Some of the scripts rely on an environment variable called <tt>EPAGES_TESTSITE</tt>. You should
-assign it, e.g. to your demo site <tt>Store</tt>.
-</p>
-
-<p>
-<img src="config_string_substitution.jpg" alt="Eclipse settings" title="Eclipse settings" />
-</p>
-
-
-<p>
-We also have a list of perl code templates. If you want to add these,
-go to the EPIC Editor Templates, and click on "Import".
-<br/><br/>
-<img src="config_code_templates.jpg" alt="Import code templates" title="import code templates" /> 
-</p>
-<p>Select <tt>perl_templates.xml</tt> from your EclipseConfig project.</p>
-<p><img src="config_template_select.jpg" alt="selecting templates.xml" title="selecting templates.xml" /> 
-
-</p>
-<h2>Perl::Critic</h2>
-
-<p>We encourage you to use Perl::Critic to enforce clean perl code. To use ePages default settings, 
-set the environment variable <tt>PERLCRITIC</tt> to point to <tt>$ENV{EPAGES_CARTRIDGES}/Core/Scripts/perlcritic_hard.conf</tt>.
-We have also provided an extended Perl::Critic configuration that even includes informational messages in <tt>perlcritic_hard_ide.conf</tt>.
-You may place this file into your project root folder, name it <tt>.perlcriticrc</tt>, and adapt it to your needs.</p>
-
-<p>To enable some additional Perl::Critic rules defined by ePages, you have to add 
-<tt>.../DE_EPAGES/Core/Scripts</tt> and <tt>.../DE_EPAGES/XML/Scripts</tt> to your <tt>PERL5LIB</tt> environment variable.</p>
-<p>
-See the following screenshot for the configuration settings of Perl::Critic in Eclipse.
-<br/><br/>
-<img src="config_perlcritic.jpg" alt="Perlcritic config" title="Perlcritic config" />
-</p>
-<p>
-</p>
-
-<h2>PerlTidy</h2>
-<p>ePages uses the following line of PerlTidy settings. Feel free to use this as a starting point, name it <tt>.perltidyrc</tt> and
-place it in your project root folder.</p>
-<pre>
--st -se -ibc -i=4 -cti=0  -sot -ndws -pt=1 -bt=1 -sbt=1 -bbt=1 -nsfs -nolq -l=160
--wbb="% + - * / x != == >= <= =~ !~ &lt; &gt; | &amp; = **= += *= &= &lt;&lt;= &&= -= /= |= >>= ||= //= .= %= ^= x="
-</pre>
-
-<h2>Last Modification</h2>
-<p>February 15th, 2011 by <a href="mailto:training@epages.com">ePages Training Department</a>.</p>
 
 </body>
 </html>
