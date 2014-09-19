@@ -1401,4 +1401,41 @@ if ( ExistsError() ) {
     } else {
         Error($$Error); #forward all other Errors
     }
-}</template></templates>
+}</template><template context="perl" description="test with import xml based on core " enabled="true" name="test import xml">package ${packagename};
+use base DE_EPAGES::Shop::API::TestImportXML;
+
+use Test::More;
+
+use strict;
+
+#----------------------------------------------------------------------------------------
+# Wrap for DE_EPAGES::Shop::API::TestImportXML
+# You need to override this methods in other to use
+#----------------------------------------------------------------------------------------
+sub shopAlias {
+    return 'ShopAliasInTheXMLFile';
+}
+sub importXMLPath {
+    return 'RelativePath/ShopXMLs.xml';
+}
+#----------------------------------------------------------------------------------------
+
+sub test {
+    my $$self = shift;
+    $$self-&gt;;test_something();
+    done_testing();
+}
+
+sub test_something {
+    my $$self = shift;
+    my $$SubTestName = (caller(0))[3];
+
+    ok(1,"$$SubTestName - tests if something is fine");
+    return;
+}
+
+
+__PACKAGE__-&gt;runScript();
+
+
+1;</template></templates>
