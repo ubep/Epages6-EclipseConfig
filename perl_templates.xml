@@ -1391,4 +1391,14 @@ sub new {
 
 ${cursor}
 
-1;</template></templates>
+1;</template><template context="perl" description="anti pokemon exception" enabled="true" name="eval">eval {
+    ${cursor}
+};
+if ( ExistsError() ) {
+    my $$Error = GetError();
+    if ( $$Error-&gt;code() eq 'ExceptedErrorCode' ) {
+        # do your magic
+    } else {
+        Error($$Error); #forward all other Errors
+    }
+}</template></templates>
