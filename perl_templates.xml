@@ -1438,4 +1438,7 @@ sub test_something {
 __PACKAGE__-&gt;runScript();
 
 
-1;</template></templates>
+1;</template><template context="perl" description="sub test" enabled="true" name="subtest">sub test${Something} {
+    my $$SubTestName = (caller(0))[3];
+     ok(0,"$$SubTestName - explain what is tested - explain what you espected");
+}</template></templates>
