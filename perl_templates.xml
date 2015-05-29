@@ -1379,13 +1379,12 @@ use strict;
 #----------------------------------------------------------------------------------------
 # §syntax       new( );
 #----------------------------------------------------------------------------------------
-# §description  constuctor
+# §description  constructor
 #----------------------------------------------------------------------------------------
 # §return       $$self | self | ${packagename}
 #========================================================================================
 sub new {
     my $$class = shift;
-    my %args  = @_;
     my $$self  = bless {}, $$class;
     return $$self;
 }
@@ -1439,9 +1438,10 @@ sub test_something {
 __PACKAGE__-&gt;runScript();
 
 
-1;</template><template context="perl" description="sub test" enabled="true" name="subtest">sub test${Something} {
+1;</template><template context="perl" description="sub test" enabled="true" name="subtest">sub test_${Something} {
+    my $$self = shift;
     my $$SubTestName = (caller(0))[3];
-     ok(0,"$$SubTestName - explain what is tested - explain what you espected");
+    ok(0,"$$SubTestName - explain what is tested - explain what you espected");
 }</template><template context="perl" description="test based on core" enabled="true" name="test framework core">package ${packagename};
 use base DE_EPAGES::Core::API::Test;
 use Test::More;
@@ -1462,7 +1462,7 @@ sub test_Something {
 __PACKAGE__-&gt;runScript();</template><template context="perl" description="get the path of a method" enabled="true" name="TestName">my $$SubTestName = (caller(0))[3];</template><template context="perl" description="get the path of a method" enabled="true" name="subtestname">my $$SubTestName = (caller(0))[3];</template><template context="perl" description="ok assert" enabled="true" name="ok">ok(1,"$$SubTestName - explain what is tested");</template><template context="perl" description="is assert" enabled="true" name="is">is(${cursor},1,"$$SubTestName - explain what is tested");</template><template context="perl" description="throws_ok unit test (dont forget to use use Test::Exception)" enabled="true" name="throws_ok">throws_ok( sub {  },
                qr/ErrorMessage/,
                "$$SubTestName - test if..."
-     );</template><template context="perl" description="use DE_EPAGES::Test::Mock::Mockify;" enabled="true" name="usemockify">use DE_EPAGES::Test::Mock::Mockify;</template><template context="perl" description="use Mockify with GetParametersFromMockifyCall " enabled="true" name="usemockifyWithetParametersFromMockifyCall">use DE_EPAGES::Test::Mock::Mockify qw ( GetParametersFromMockifyCall );</template><template context="perl" description="create a mockifyed object" enabled="true" name="submockify">sub _create${curser} {
+     );</template><template context="perl" description="use DE_EPAGES::Test::Mock::Mockify;" enabled="true" name="usemockify">use DE_EPAGES::Test::Mock::Mockify;</template><template context="perl" description="use Mockify with GetParametersFromMockifyCall " enabled="true" name="usemockifyWithetParametersFromMockifyCall">use DE_EPAGES::Test::Mock::Mockify qw ( GetParametersFromMockifyCall WasCalled GetCallCount );</template><template context="perl" description="create a mockifyed object" enabled="true" name="submockify">sub _create${curser} {
     my $$self = shift;
 
     my $$aParameterList = [];
@@ -1475,10 +1475,10 @@ __PACKAGE__-&gt;runScript();</template><template context="perl" description="get
 }</template><template context="perl" description="use DE_EPAGES::Test::Mock::EpagesObject;" enabled="true" name="useepagesobject">use DE_EPAGES::Test::Mock::EpagesObject;</template><template context="perl" description="sub for ePages object" enabled="true" name="subepagesobject">sub _create${name} {
     my $$self = shift;
 
-    my $$hAtributes = {
+    my $$hAttributes = {
         'Alias' =&gt; 'MyTestAddress'
     };
-    my $$${name} = DE_EPAGES::Test::Mock::EpagesObject-&gt;new( 'DE_EPAGES::${name}::API::Object::${name}', $$hAtributes );
+    my $$${name} = DE_EPAGES::Test::Mock::EpagesObject-&gt;new( 'DE_EPAGES::${name}::API::Object::${name}', $$hAttributes );
 
     return $$${name};
 }</template></templates>
