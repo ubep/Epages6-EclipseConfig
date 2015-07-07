@@ -1399,6 +1399,7 @@ ${cursor}
 if ( ExistsError() ) {
     my $$Error = GetError();
     if ( $$Error-&gt;code() eq 'ExceptedErrorCode' ) {
+        LogError($$Error);
         # do your magic
     } else {
         Error($$Error); #forward all other Errors
@@ -1443,7 +1444,7 @@ __PACKAGE__-&gt;runScript();
 1;</template><template context="perl" description="sub test" enabled="true" name="subtest">sub test_${Something} {
     my $$self = shift;
     my $$SubTestName = (caller(0))[3];
-    ok(0,"$$SubTestName - explain what is tested - explain what you espected");
+    ok(0,"$$SubTestName - explain what is tested - explain what you expected");
 }</template><template context="perl" description="test based on core" enabled="true" name="test framework core">package ${packagename};
 use base DE_EPAGES::Core::API::Test;
 use Test::More;
@@ -1483,4 +1484,17 @@ __PACKAGE__-&gt;runScript();</template><template context="perl" description="get
     my $$${name} = DE_EPAGES::Test::Mock::EpagesObject-&gt;new( 'DE_EPAGES::${name}::API::Object::${name}', $$hAttributes );
 
     return $$${name};
+}</template><template context="perl" description="wrapper for LoadRootObject" enabled="true" name="LoadRootObject">#========================================================================================
+# §function     _LoadRootObject
+# §state        private
+#----------------------------------------------------------------------------------------
+# §syntax       $$Object = _LoadRootObject();
+#----------------------------------------------------------------------------------------
+# §description  Wrapper for unit test. Returns the root object.
+#----------------------------------------------------------------------------------------
+# §return       root object | DE_EPAGES::Object::API::Object::Site
+#========================================================================================
+sub _LoadRootObject {
+    my $$self = shift;
+    return LoadRootObject();
 }</template></templates>
