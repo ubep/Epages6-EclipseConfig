@@ -243,6 +243,7 @@ while ( ${condition} );</template><template context="perl" description="for loop
 };</template><template context="perl" description="Test regular expression" enabled="true" name="regex match">$${var} =~ m/${regex}/</template><template context="perl" description="Test regular expression" enabled="true" name="regex missmatch">$${var} !~ m/${regex}/</template><template context="perl" description="Replace with regular expression" enabled="true" name="regex replace">$$${var} =~ s/${reg_search}/${reg_replace}/</template><template context="perl" description="Replace with transliteration" enabled="true" name="transliteration">$$${var} =~ tr/${source}/${replace}/</template><template context="perl" description="function" enabled="true" name="sub">sub ${name} {
     my ($$${Arguments}) = @_;
     ${cursor}
+    return;
 }</template><template context="perl" description="Open input file" enabled="true" name="open input file">my	$$INFILE_filename = '${filename}'; # input file name
 
 open ( INFILE, '&lt;', $$INFILE_filename )
@@ -1058,6 +1059,7 @@ sub end_${Element} {&#13;
     my $$self = shift;
     my ($$${Arguments}) = @_;
     ${cursor}
+    return;
 }</template><template context="perl" description="Assign a here document to a variable" enabled="true" name="heredoc">&lt;&lt;${HEREMARK}
 ${cursor}
 ${HEREMARK}</template><template context="perl" description="calls $Form-&gt;executeFormError()" enabled="true" name="$Form-&gt;executeFormError">$$Form-&gt;executeFormError({&#13;
