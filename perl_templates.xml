@@ -5,13 +5,13 @@ use warnings;
 ${cursor}</template><template context="perl" description="Perl Package Starter" enabled="true" name="package">package ${packagename};
 
 ${cursor}</template><template context="perl" description="LogDebug" enabled="true" name="LogDebug">LogDebug( q{${Variable}:}, ${Variable});</template><template context="perl" description="eDoc of an epages package" enabled="true" name="# eDocPackage">#========================================================================================&#13;
-# §package      DE_EPAGES::${package}&#13;
+# §package      ${packagename}&#13;
 # §base         DE_EPAGES::${base}&#13;
 # §state        public&#13;
 #----------------------------------------------------------------------------------------&#13;
-# §description  &#13;
+# §description  #TODO: Add a description for ${packagename}&#13;
 #----------------------------------------------------------------------------------------&#13;
-# §example      &#13;
+# §example      #TODO: Add an example for ${packagename}&#13;
 #========================================================================================</template><template context="perl" description="getter/setter method" enabled="true" name="subGetterSetter">sub ${var} {&#13;
     my $$self = shift;&#13;
     my ($$${var}) = @_;&#13;
@@ -52,22 +52,7 @@ if (ExistsError()) {&#13;
     return {&#13;
             '${ErrorCode}' =&gt; '${ErrorMessage}',&#13;
     };&#13;
-}</template><template context="perl" description="perl package skeleton" enabled="true" name="PackageSkeleton">#========================================================================================&#13;
-# §package      DE_EPAGES::${Package}&#13;
-# §base         ${Base}&#13;
-# §state        public&#13;
-# §description  ${Description}&#13;
-#========================================================================================&#13;
-package DE_EPAGES::${Package};&#13;
-use base ${Base};&#13;
-&#13;
-use strict;&#13;
-&#13;
-sub ${MySub} {&#13;
-    ${cursor}&#13;
-}&#13;
-&#13;
-1;</template><template context="perl" description="use TestParameter" enabled="true" name="useTestParameter">use DE_EPAGES::Core::API::TestParameter qw ( ${TestString} ${cursor});</template><template context="perl" description="use Cartridge::..ExistsCartridgeByPackage" enabled="true" name="useExistsCartridge">use DE_EPAGES::Cartridge::API::Table::Cartridge qw ( ExistsCartridgeByPackage );</template><template context="perl" description="existsCartridge" enabled="true" name="existsCartridge"># make sure that the cartridge is installed&#13;
+}</template><template context="perl" description="use TestParameter" enabled="true" name="useTestParameter">use DE_EPAGES::Core::API::TestParameter qw ( ${TestString} ${cursor});</template><template context="perl" description="use Cartridge::..ExistsCartridgeByPackage" enabled="true" name="useExistsCartridge">use DE_EPAGES::Cartridge::API::Table::Cartridge qw ( ExistsCartridgeByPackage );</template><template context="perl" description="existsCartridge" enabled="true" name="existsCartridge"># make sure that the cartridge is installed&#13;
 unless (ExistsCartridgeByPackage('DE_EPAGES::${Cartridge}')) {&#13;
     print 'Store: '.$$StoreName.": Cartridge ${Cartridge} is not installed.\n" if ($$printOutput);&#13;
     return;&#13;
@@ -1358,9 +1343,9 @@ warn Dumper ${cursor};</template><template context="perl" description="return un
 # §package      ${packagename}
 # §state        public
 #----------------------------------------------------------------------------------------
-# §description  description
+# §description  #TODO: Add a description for ${packagename}
 #----------------------------------------------------------------------------------------
-# §example      example
+# §example      #TODO: Add an example for ${packagename}
 #========================================================================================
 package ${packagename};
 
